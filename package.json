@@ -4,6 +4,8 @@
   "description": "Expense tracker web app",
   "main": "app.js",
   "scripts": {
+    "serve": "nodemon app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/korybecker/expense-tracker/issues"
   },
-  "homepage": "https://github.com/korybecker/expense-tracker#readme"
+  "homepage": "https://github.com/korybecker/expense-tracker#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.2"
+  }
 }
