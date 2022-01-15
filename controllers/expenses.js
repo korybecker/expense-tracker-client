@@ -1,13 +1,16 @@
+const Expense = require('../models/expense');
+
 const getAllExpenses = (req, res) => {
     res.send('get all expenses');
 };
 
-const createExpense = (req, res) => {
-    res.send('create expense');
+const createExpense = async (req, res) => {
+    const expense = await Expense.create(req.body)
+    res.status(201).json({expense});
 };
 
 const getSingleExpense = (req, res) => {
-    res.send('get single expense');
+    res.json({id:req.params.id});
 };
 
 const updateExpense = (req, res) => {
