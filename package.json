@@ -1,0 +1,19 @@
+{
+  "name": "expense-tracker",
+  "version": "1.0.0",
+  "description": "Expense tracker web app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/korybecker/expense-tracker.git"
+  },
+  "author": "Kory Becker",
+  "license": "MIT OR Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/korybecker/expense-tracker/issues"
+  },
+  "homepage": "https://github.com/korybecker/expense-tracker#readme"
+}
