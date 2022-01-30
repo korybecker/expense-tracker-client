@@ -18,7 +18,10 @@ const Expenses = () => {
             return res.json();
           }
         })
-        .then((jsonRes) => setExpenses(jsonRes.expenses))
+        .then((jsonRes) => {
+          console.log(jsonRes);
+          setExpenses(jsonRes.expenses);
+        })
         .catch((e) => console.error(e));
     };
     getExpenses();
