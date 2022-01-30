@@ -12,7 +12,7 @@ const Expenses = () => {
 
   useEffect(() => {
     const getExpenses = async () => {
-      await fetch("http://localhost:5000/api/v1/expenses")
+      await fetch("https://expense-tracker-kb.herokuapp.com/api/v1/expenses")
         .then((res) => {
           if (res.ok) {
             return res.json();
