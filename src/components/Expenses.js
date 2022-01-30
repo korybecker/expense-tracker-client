@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Expense from "./Expense";
 
 const Expenses = () => {
@@ -11,32 +12,33 @@ const Expenses = () => {
   ]);
 
   useEffect(() => {
-    const getExpenses = async () => {
-      await fetch("https://expense-tracker-kb.herokuapp.com/api/v1/expenses")
+    const fetchData = async () => {
+      await axios
+        .get("https://expense-tracker-kb.herokuapp.com/api/v1/expenses")
         .then((res) => {
-          if (res.ok) {
-            return res.json();
-          }
+          setExpenses(res.data.expenses);
         })
-        .then((jsonRes) => {
-          console.log(jsonRes);
-          setExpenses(jsonRes.expenses);
-        })
-        .catch((e) => console.error(e));
+        .catch((e) => console.log(e));
     };
-    getExpenses();
+    fetchData();
   }, []);
+
+  const renderExpenses = expenses.map((expense, index) => {
+    return (
+      <Expense
+        key={index}
+        id={expense._id}
+        title={expense.title}
+        amount={expense.amount}
+        recurring={expense.recurring}
+      />
+    );
+  });
+
   return (
     <div className="container">
       <h1>My Expenses</h1>
-      {expenses.map((expense) => (
-        <Expense
-          key={expense.title}
-          title={expense.title}
-          amount={expense.amount}
-          recurring={expense.recurring}
-        />
-      ))}
+      {renderExpenses}
     </div>
   );
 };
