@@ -6,7 +6,9 @@ const Expense = (props) => {
     e.preventDefault();
     console.log({ props });
     axios
-      .delete(`/api/v1/expenses/${props.id}`)
+      .delete(
+        `https://expense-tracker-kb.herokuapp.com/api/v1/expenses${props.id}`
+      )
       .then((res) => {
         console.log(res);
       })
