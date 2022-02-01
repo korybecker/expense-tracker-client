@@ -1,12 +1,17 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "../axios";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
-const CreateExpense = () => {
+const UpdateExpense = (props) => {
+  const expenses = props.expenses.expenses;
+  const { id } = useParams();
+
+  const expense = expenses.filter((expense) => expense._id === id)[0];
+
   const navigate = useNavigate();
-  const [title, setTitle] = useState("");
-  const [amount, setAmount] = useState(0);
-  const [recurring, setRecurring] = useState(false);
+  const [title, setTitle] = useState(expense.title);
+  const [amount, setAmount] = useState(expense.amount);
+  const [recurring, setRecurring] = useState(expense.recurring);
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -20,15 +25,16 @@ const CreateExpense = () => {
     setRecurring(!recurring);
   };
 
-  const createExpense = (e) => {
+  const updateExpense = (e) => {
     e.preventDefault();
     axios
-      .post("/api/v1/expenses", {
+      .patch(`/api/v1/expenses/${id}`, {
         title,
         amount,
         recurring,
       })
       .then((res) => {
+        console.log(res);
         navigate("/expenses");
       })
       .catch((e) => {
@@ -38,14 +44,14 @@ const CreateExpense = () => {
 
   return (
     <div className="container">
-      <h1>Create an Expense</h1>
-      <form onSubmit={createExpense}>
+      <h1>Update an Expense</h1>
+      <form onSubmit={updateExpense}>
         <div className="form-group">
           <label>Title: </label>
           <input
-            required
             autoComplete="off"
             type="text"
+            value={title}
             name="title"
             id="title"
             className="form-control"
@@ -58,6 +64,7 @@ const CreateExpense = () => {
             required
             autoComplete="off"
             type="number"
+            value={amount}
             name="amount"
             id="amount"
             className="form-control"
@@ -74,12 +81,27 @@ const CreateExpense = () => {
             type="checkbox"
           ></input>
         </div>
-        <button type="submit" className="btn btn-lg btn-info">
-          Add Expense
-        </button>
+        <div className="btn-group">
+          <div>
+            <button
+              type="button"
+              value="Cancel"
+              onClick={() => navigate("/expenses")}
+              className="btn btn-lg btn-secondary"
+            >
+              Cancel
+            </button>
+          </div>
+
+          <div className="ml-2">
+            <button type="submit" className="btn btn-lg btn-info">
+              Update Expense
+            </button>
+          </div>
+        </div>
       </form>
     </div>
   );
 };
 
-export default CreateExpense;
+export default UpdateExpense;

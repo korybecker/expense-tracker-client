@@ -9,6 +9,7 @@ const Expense = (props) => {
       </div>
       <div>
         <button onClick={props.deleteExpense}>Delete</button>
+        <button onClick={props.updateExpense}>Update</button>
       </div>
     </div>
   );
