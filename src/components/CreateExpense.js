@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "../axios";
 
 const CreateExpense = () => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState(0);
   const [recurring, setRecurring] = useState(false);
@@ -27,7 +29,7 @@ const CreateExpense = () => {
         recurring,
       })
       .then((res) => {
-        console.log(res);
+        navigate("/expenses");
       })
       .catch((e) => {
         console.error(e);

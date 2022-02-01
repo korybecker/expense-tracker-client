@@ -1,20 +1,6 @@
-import axios from "axios";
 import React from "react";
 
 const Expense = (props) => {
-  const deleteExpense = (e) => {
-    e.preventDefault();
-    console.log({ props });
-    axios
-      .delete(
-        `https://expense-tracker-kb.herokuapp.com/api/v1/expenses${props.id}`
-      )
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((e) => console.log(e));
-  };
-  console.log({ props });
   return (
     <div className="bg-light container card">
       <div>
@@ -22,7 +8,7 @@ const Expense = (props) => {
         <p>${props.amount}</p>
       </div>
       <div>
-        <button onClick={deleteExpense}>Delete</button>
+        <button onClick={props.deleteExpense}>Delete</button>
       </div>
     </div>
   );
