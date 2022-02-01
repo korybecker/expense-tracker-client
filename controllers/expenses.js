@@ -31,7 +31,25 @@ const getSingleExpense = async (req, res) => {
   }
 };
 
-const updateExpense = async (req, res) => {};
+const updateExpense = async (req, res) => {
+  try {
+    const { id: expenseID } = req.params;
+    const expense = await Expense.findOneAndUpdate(
+      { _id: expenseID },
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    if (!expense) {
+      return res.status(404).json({ msg: `No expense with id ${id}` });
+    }
+    res.status(200).json({ expense, status: "success" });
+  } catch (err) {
+    res.status(500).json({ msg: e, status: "failure" });
+  }
+};
 
 const deleteExpense = async (req, res) => {
   try {
