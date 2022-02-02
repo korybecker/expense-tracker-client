@@ -34,7 +34,7 @@ const getSingleExpense = async (req, res) => {
 const updateExpense = async (req, res) => {
   try {
     const { id: expenseID } = req.params;
-    const expense = await Expense.findOneAndUpdate(
+    const expense = await Expense.findOneAndReplace(
       { _id: expenseID },
       req.body,
       {
