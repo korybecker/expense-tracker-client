@@ -14,7 +14,6 @@ function App() {
   // useEffect to connnect to api
   useEffect(() => {
     let mounted = true;
-    console.log(1);
     axios
       .get("https://expense-tracker-kb.herokuapp.com/api/v1/expenses")
       .then((res) => {

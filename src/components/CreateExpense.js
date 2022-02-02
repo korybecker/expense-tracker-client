@@ -39,45 +39,48 @@ const CreateExpense = () => {
   return (
     <div className="container">
       <h1>Create an Expense</h1>
-      <form onSubmit={createExpense}>
-        <div className="form-group">
-          <label>Title: </label>
-          <input
-            required
-            autoComplete="off"
-            type="text"
-            name="title"
-            id="title"
-            className="form-control"
-            onChange={handleTitleChange}
-          ></input>
-        </div>
-        <div className="form-group">
-          <label>Amount: </label>
-          <input
-            required
-            autoComplete="off"
-            type="number"
-            name="amount"
-            id="amount"
-            className="form-control"
-            onChange={handleAmountChange}
-          ></input>
-        </div>
-        <div className="form-group">
-          <label>Recurring: </label>
-          <input
-            name="recurring"
-            amount="recurring"
-            checked={recurring}
-            onChange={handleRecurringChange}
-            type="checkbox"
-          ></input>
-        </div>
-        <button type="submit" className="btn btn-lg btn-info">
-          Add Expense
-        </button>
-      </form>
+      <div className="border rounded pl-4">
+        <form onSubmit={createExpense}>
+          <div className="form-group m-4">
+            <label>Title: </label>
+            <input
+              required
+              autoComplete="off"
+              type="text"
+              name="title"
+              id="title"
+              className="form-control"
+              onChange={handleTitleChange}
+            ></input>
+          </div>
+          <div className="form-group m-4">
+            <label>Amount: </label>
+            <input
+              required
+              autoComplete="off"
+              type="number"
+              name="amount"
+              id="amount"
+              className="form-control"
+              onChange={handleAmountChange}
+            ></input>
+          </div>
+          <div className="form-group m-4">
+            <label>Recurring: </label>
+            <br></br>
+            <input
+              name="recurring"
+              amount="recurring"
+              checked={recurring}
+              onChange={handleRecurringChange}
+              type="checkbox"
+            ></input>
+          </div>
+          <button type="submit" className="btn btn-lg btn-info m-4">
+            Add Expense
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

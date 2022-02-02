@@ -4,14 +4,13 @@ import Expense from "./Expense";
 import { useNavigate } from "react-router-dom";
 
 const Expenses = (props) => {
-  const [expenses, setExpenses] = useState(props.expenses);
+  const [expenses, setExpenses] = useState();
 
-  // "deleted" indicator to navigate to expenses when delete is pressed
+  // "deleted" indicator to rerender expenses when delete is pressed
   const [deletedIndicator, setDeletedIndicator] = useState(true);
 
   useEffect(() => {
     let mounted = true;
-    console.log(1);
     axios
       .get("https://expense-tracker-kb.herokuapp.com/api/v1/expenses")
       .then((res) => {
@@ -32,7 +31,7 @@ const Expenses = (props) => {
 
   return (
     <div className="container">
-      <h1>My Expenses</h1>
+      <h1>Our Expenses</h1>
       {expenses &&
         expenses.expenses
           .slice(0)
