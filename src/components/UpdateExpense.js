@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import axios from "../axios";
 
 const UpdateExpense = (props) => {
   const expenses = props.expenses.expenses;
@@ -27,12 +27,14 @@ const UpdateExpense = (props) => {
 
   const updateExpense = (e) => {
     e.preventDefault();
+    const send = {
+      title,
+      amount,
+      recurring,
+    };
+    console.log(send);
     axios
-      .patch(`/api/v1/expenses/${id}`, {
-        title,
-        amount,
-        recurring,
-      })
+      .put(`/api/v1/expenses/${id}`, send)
       .then((res) => {
         console.log(res);
         navigate("/expenses");
