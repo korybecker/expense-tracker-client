@@ -29,7 +29,7 @@ const CreateExpense = () => {
         recurring,
       })
       .then((res) => {
-        navigate("/expenses");
+        navigate("/");
       })
       .catch((e) => {
         console.error(e);
