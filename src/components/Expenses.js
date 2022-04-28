@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const Expenses = (props) => {
   const [expenses, setExpenses] = useState();
+  const [total, setTotal] = useState(0);
 
   // "deleted" indicator to rerender expenses when delete is pressed
   const [deletedIndicator, setDeletedIndicator] = useState(true);
@@ -16,6 +17,11 @@ const Expenses = (props) => {
       .then((res) => {
         if (mounted) {
           setExpenses(res.data);
+          let totalAmount = 0;
+          res.data.expenses.forEach((expense) => {
+            totalAmount += expense.amount;
+          });
+          setTotal(totalAmount);
         }
       })
       .catch((e) => console.log(e));
@@ -31,7 +37,11 @@ const Expenses = (props) => {
 
   return (
     <div className="container">
-      <h1>Our Expenses</h1>
+      <div>
+        <h1>Our Expenses</h1>
+        <h4>Total Magnitude of Expenditure: ${total}</h4>
+      </div>
+
       {expenses &&
         expenses.expenses
           .slice(0)

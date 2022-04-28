@@ -20,7 +20,6 @@ const UpdateExpense = (props) => {
       .get("https://expense-tracker-kb.herokuapp.com/api/v1/expenses")
       .then((res) => {
         if (mounted) {
-          console.log(res);
           setExpenses(res.data.expenses);
           setTitle(
             res.data.expenses.filter((expense) => expense._id === id)[0].title

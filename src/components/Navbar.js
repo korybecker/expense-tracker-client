@@ -11,13 +11,13 @@ const Navbar = () => {
         </Link>
       </h4>
       <h4>
-        <Link className="link" to="/expenses">
-          My Expenses
+        <Link className="link" to="/create">
+          Create New Expense
         </Link>
       </h4>
       <h4>
-        <Link className="link" to="/create">
-          Create New Expense
+        <Link className="link" to="/about">
+          About
         </Link>
       </h4>
     </nav>
