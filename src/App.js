@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import CreateExpense from "./components/CreateExpense";
 import Navbar from "./components/Navbar";
 import Expenses from "./components/Expenses";
-import Home from "./components/Home";
 import UpdateExpense from "./components/UpdateExpense";
+import About from "./components/About";
 import axios from "axios";
 
 function App() {
@@ -31,8 +31,8 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/expenses" element={<Expenses expenses={expenses} />} />
+          <Route exact path="/" element={<Expenses expenses={expenses} />} />
+          <Route path="/about" element={<About />} />
           <Route path="/create" element={<CreateExpense />} />
           <Route
             path="/update/:id"
